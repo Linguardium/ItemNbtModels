@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "mod.linguardium.itemnbtmodels.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [  ],
+  "client": [
+    "ModelOverrideDeserializerMixin",
+    "ModelOverrideMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

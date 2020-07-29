@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "itemnbtmodels",
+  "version": "${version}",
+  "name": "ItemNbtModels",
+  "description": "Allow custom models based on nbt",
+  "authors": [
+    "Linguardium"
+  ],
+  "contributors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/itemnbtmodels/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "mod.linguardium.itemnbtmodels.Main"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [
+    "itemnbtmodels.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  }
+}
