@@ -20,8 +20,17 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+/*
 	implementation "org.graalvm.js:js:20.1.0"
 	include "org.graalvm.js:js:20.1.0"
+	implementation "org.graalvm.sdk:graal-sdk:20.1.0"
+	include "org.graalvm.sdk:graal-sdk:20.1.0"
+	implementation "org.graalvm.truffle:truffle-api:20.1.0"
+	include "org.graalvm.truffle:truffle-api:20.1.0"
+
+	too big for me
+	*/
+
 }
 
 processResources {
