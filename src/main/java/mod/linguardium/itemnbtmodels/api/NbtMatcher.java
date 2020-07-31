@@ -5,12 +5,10 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import net.minecraft.command.arguments.NbtPathArgumentType;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.Tag;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import javax.script.Bindings;
 import javax.script.ScriptEngine;
@@ -33,8 +31,9 @@ public class NbtMatcher {
 
     public static class StackMatcher {
         ItemStack stack;
-        StackMatcher(ItemStack itemStack) {
-            stack = itemStack;
+        LivingEntity entity;
+        StackMatcher(ItemStack itemStack, LivingEntity entity) {
+            stack = itemStack; this.entity=entity;
         }
         public Long Number(String string) {
             Long l = 0L;
@@ -63,9 +62,22 @@ public class NbtMatcher {
                 return t.asString();
             return "";
         }
-        public Integer Enchantment(String string) {
-                return EnchantmentHelper.getLevel(Registry.ENCHANTMENT.get(new Identifier(string)),stack);
+        public Integer Count() {
+                return stack.getCount();
         }
+        public Boolean MainHand() {
+            return entity.getMainHandStack().equals(stack);
+        }
+        public Boolean OffHand() {
+            return entity.getOffHandStack().equals(stack);
+        }
+        public Integer Damage() {
+            return stack.getDamage();
+        }
+        public Integer MaxDamage() {
+            return stack.getMaxDamage();
+        }
+
         public String path(String string) {
             try {
                 Tag ret = null;
@@ -78,14 +90,11 @@ public class NbtMatcher {
         }
 
     }
-    public static boolean matches(ItemStack stack, NbtCheckValue pred) {
+    public static boolean matches(ItemStack stack, LivingEntity entity, NbtCheckValue pred) {
         Bindings bindings = Engine.createBindings();
-        bindings.put("Nbt",new StackMatcher(stack.copy()));
-        //Value bindings = context.getBindings("js");
-        //bindings.putMember("Nbt",new StackMatcher(stack.copy()));
+        bindings.put("Nbt",new StackMatcher(stack,entity));
         try {
             Object retval = Engine.eval(pred.eval,bindings);
-            //Value retval = context.eval("js", pred.eval);
             if (retval instanceof Boolean)
                 return (Boolean)retval;
         }catch(ScriptException ignored) { }

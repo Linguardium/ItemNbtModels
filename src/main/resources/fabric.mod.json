@@ -14,9 +14,9 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "mod.linguardium.itemnbtmodels.Main"
+
     ],
-    "client": [],
+    "client": ["mod.linguardium.itemnbtmodels.Main"],
     "server": []
   },
   "mixins": [

@@ -2,8 +2,9 @@
   "required": true,
   "package": "mod.linguardium.itemnbtmodels.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [  ],
+  "mixins": [],
   "client": [
+    "ModelLoaderMixin",
     "ModelOverrideDeserializerMixin",
     "ModelOverrideMixin"
   ],

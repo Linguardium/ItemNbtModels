@@ -33,7 +33,7 @@ public class ModelOverrideMixin implements ModelOverrideNBTList {
     @Inject(at=@At(value="FIELD", target="net/minecraft/client/render/model/json/ModelOverride.predicateToThresholds:Ljava/util/Map;"),method="matches", cancellable = true)
     private void checkNBTPredicatesFirst(ItemStack stack, ClientWorld world, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
         for(NbtMatcher.NbtCheckValue predicate : getNbtPredicates()) {
-            if (!NbtMatcher.matches(stack, predicate)) {
+            if (!NbtMatcher.matches(stack, entity, predicate)) {
                 cir.setReturnValue(false);
             }
         }
