@@ -17,7 +17,8 @@
 
     ],
     "client": ["mod.linguardium.itemnbtmodels.Main"],
-    "server": []
+    "server": [],
+    "modmenu": [ "mod.linguardium.itemnbtmodels.config.ModMenuCompat" ]
   },
   "mixins": [
     "itemnbtmodels.mixins.json"
@@ -25,5 +26,10 @@
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*"
+  },
+  "accessWidener": "itemnbtmodels.aw",
+  "custom": {
+    "modmenu:api": false,
+    "modmenu:clientsideOnly": true
   }
 }

@@ -11,6 +11,7 @@ version = project.mod_version
 group = project.maven_group
 
 minecraft {
+	accessWidener "src/main/resources/itemnbtmodels.aw"
 }
 
 dependencies {
@@ -20,6 +21,12 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	modApi "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+	include "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+	modApi "me.shedaniel.cloth:config-2:${project.clothconfig_version}"
+	include "me.shedaniel.cloth:config-2:${project.clothconfig_version}"
+	modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
+
 /*
 	implementation "org.graalvm.js:js:20.1.0"
 	include "org.graalvm.js:js:20.1.0"

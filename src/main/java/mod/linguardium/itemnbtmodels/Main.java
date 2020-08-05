@@ -1,6 +1,10 @@
 package mod.linguardium.itemnbtmodels;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
 import mod.linguardium.itemnbtmodels.compat.CITParser;
+import mod.linguardium.itemnbtmodels.config.ModConfig;
+import mod.linguardium.itemnbtmodels.model.INMLoader;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -32,11 +36,17 @@ public class Main implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         log(Level.INFO, "Initializing");
-        //ModelLoadingRegistry.INSTANCE.registerAppender(CITParser::ModelLoaderListener);
-        //ModelLoadingRegistry.INSTANCE.registerVariantProvider(CITParser.CITVariantProvider::new);
+        AutoConfig.register(ModConfig.class, Toml4jConfigSerializer::new);
+
+        ModelLoadingRegistry.INSTANCE.registerAppender(CITParser::ModelLoaderListener);
+        ModelLoadingRegistry.INSTANCE.registerVariantProvider(CITParser.CITVariantProvider::new);
+        ModelLoadingRegistry.INSTANCE.registerVariantProvider(INMLoader::new);
+
         //TODO: Initializer
     }
-
+    public static ModConfig config() {
+        return AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+    }
     public static void log(Level level, String message){
         LOGGER.log(level, "["+MOD_NAME+"] " + message);
     }

@@ -24,7 +24,7 @@ public class NbtMatcher {
     //}
     static public class NbtCheckValue {
         String eval;
-        NbtCheckValue(String eval) {
+        public NbtCheckValue(String eval) {
             this.eval=eval;
         }
     }

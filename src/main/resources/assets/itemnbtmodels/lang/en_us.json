@@ -1,0 +1,5 @@
+{
+  "text.autoconfig.itemnbtmodels.option.LoadOverridenPredicates": "Load Overridden Predicates",
+  "text.autoconfig.itemnbtmodels.option.AttemptLoadingProperties": "Provide limited cit properties support",
+  "text.autoconfig.itemnbtmodels.title": "Item NBT Models Config"
+}

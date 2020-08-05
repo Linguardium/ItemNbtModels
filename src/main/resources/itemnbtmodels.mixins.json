@@ -4,9 +4,14 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [],
   "client": [
+    "ItemModelGeneratorMixin",
+    "JsonUnbakedModel$DeserializerMixin",
+    "JsonUnbakedModelAccessor",
+    "JsonUnbakedModelMixin",
     "ModelLoaderMixin",
     "ModelOverrideDeserializerMixin",
-    "ModelOverrideMixin"
+    "ModelOverrideMixin",
+    "SpriteAtlasTextureMixin"
   ],
   "server": [],
   "injectors": {
