@@ -100,6 +100,8 @@ public class CITParser {
                        items.add(itemId);
                    }
                }
+               if (model.isEmpty())
+                   model=id.toString().substring(0,id.toString().lastIndexOf('.'));
                for (Identifier itemId : items) {
                        ModelOverride mo = new ModelOverride(new Identifier(model),Collections.emptyMap());
                        if (mo instanceof ModelOverrideNBTList) {
